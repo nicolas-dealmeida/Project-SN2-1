@@ -20,7 +20,7 @@ $User = new user($BDD);
 
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -40,14 +40,14 @@ $User = new user($BDD);
 
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
 
     <main class="form-signin">
         <form method="POST">
-            <img class="mb-4" src="logo providence.png" alt="" width="72" height="57">
+            <img class="mb-4" src="image/logo providence.png" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">connexion</h1>
 
             <div class="form-floating">
