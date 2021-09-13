@@ -9,6 +9,6 @@
             die('Erreur : '. $e->getMessage());
         }
     } else {
-        include("login.php");
+        include("connexion.php");
     }
 ?>
