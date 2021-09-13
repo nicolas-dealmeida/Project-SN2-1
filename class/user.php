@@ -20,29 +20,20 @@ class user
     // Fonction qui permet au user de se connecter, elle attend en paramétre un login et un mdp
     function connexion($login, $mdp)
     {
-        if (isset($_POST['log']) && isset($_POST['pass'])) {
-            $login = $_POST['log'];
-            $mdp = $_POST['pass'];
-
-            $req = "SELECT count(*) FROM user where 
-            pseudo = '" . $login . "' and mdp = '" . $mdp . "' ";
-            $RequetStatement = $this->_BDD->query($req);
-            $count = $RequetStatement->fetchColumn();
-
-            if ($count != 0) {
-                $_SESSION['log'] = $login;
-                include("accueil.php");
-            } else {
-                include("connexion.php");
-            }
-        } else {
-            include("connexion.php");
+        $requser = $this->_BDD->prepare("SELECT * FROM `user` WHERE `pseudo` = ? AND `mdp` = ?");
+        $requser->execute(array($login, $mdp));
+        $userexist = $requser->rowCount();
+        if ($userexist == 1) {
+            $userexist = $requser->fetch();
+            $_SESSION['id_user'] = $userexist['id'];
+           
+        }else{
+            echo "erreur mdp incorecte";
         }
     }
 
     function deconnexion()
     {
-        session_start();
         session_destroy();
         include("connexion.php");
         exit();
@@ -59,6 +50,6 @@ class user
             echo "erreur";
         }
 
-        include("index.php");
+        //include("index.php");
     }
 }
