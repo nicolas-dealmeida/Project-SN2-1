@@ -57,10 +57,10 @@ class user
 
             if (isset($_POST['inscription'])) { // On récupére les informations saisie dans le formulaire d'inscription
                 if ($mdp == $confmdp) {
-                    $login = $_POST['pseudo'];
-                    $nom = $_POST['nom'];
-                    $prenom = $_POST['prenom'];
-                    $mdp = $_POST['mdp'];
+                    $login = $_POST['log'];
+                    $nom = $_POST['name'];
+                    $prenom = $_POST['first_name'];
+                    $mdp = $_POST['pass'];
 
                     $req = "INSERT INTO `user`(`pseudo`, `nom`, `prenom`, `mdp`) VALUES ($login, $nom, $prenom, $mdp)";
                     $RequetStatement = $this->$BDD->query($req);
