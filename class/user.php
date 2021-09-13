@@ -24,13 +24,14 @@ class user
             $login = $_POST['log'];
             $mdp = $_POST['pass'];
 
-            $req = "";
+            $req = "SELECT count(*) FROM user where 
+            pseudo = '" . $login . "' and mdp = '" . $mdp . "' ";
             $RequetStatement = $this->_BDD->query($req);
             $count = $RequetStatement->fetchColumn();
 
             if ($count != 0) {
                 $_SESSION['log'] = $login;
-                include("");
+                include("accueil.php");
             } else {
                 include("connexion.php");
             }
@@ -55,20 +56,15 @@ class user
             $valid = true;
 
             if (isset($_POST['inscription'])) { // On récupére les informations saisie dans le formulaire d'inscription
-                $login = htmlentities(trim($login));
-                $nom = htmlentities(trim($nom));
-                $prenom = htmlentities(trim($prenom));
-                $mdp = trim($mpd);
-            }
+                if ($mdp == $confmdp) {
+                    $login = $_POST['pseudo'];
+                    $nom = $_POST['nom'];
+                    $prenom = $_POST['prenom'];
+                    $mdp = $_POST['mdp'];
 
-            if ($valid) { // On mets les informations dans la BDD
-                $mdp = crypt($mdp, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
-
-                $this->BDD->insert(
-                    "INSERT INTO utilisateur (nom, prenom, mail, mdp) VALUES 
-                    (?, ?, ?, ?)",
-                    array($nom, $prenom, $mail, $mdp)
-                );
+                    $req = "INSERT INTO `user`(`pseudo`, `nom`, `prenom`, `mdp`) VALUES ($login, $nom, $prenom, $mdp)";
+                    $RequetStatement = $this->$BDD->query($req);
+                }
             }
 
             include("index.php");
