@@ -49,25 +49,16 @@ class user
     }
 
     // Fonction qui permet au user de s'inscrire, elle attend en commentaire un login, un mdp, un nom et un prénom
-    function inscription($login, $mdp, $nom, $prenom)
+    function inscription($login, $mdp, $nom, $prenom, $confmdp)
     {
-        if (!empty($_POST)) {
-            extract($_POST);
-            $valid = true;
+        if ($mdp == $confmdp) {
 
-            if (isset($_POST['inscription'])) { // On récupére les informations saisie dans le formulaire d'inscription
-                if ($mdp == $confmdp) {
-                    $login = $_POST['log'];
-                    $nom = $_POST['name'];
-                    $prenom = $_POST['first_name'];
-                    $mdp = $_POST['pass'];
-
-                    $req = "INSERT INTO `user`(`pseudo`, `nom`, `prenom`, `mdp`) VALUES ($login, $nom, $prenom, $mdp)";
-                    $RequetStatement = $this->$BDD->query($req);
-                }
-            }
-
-            include("index.php");
+            $req = "INSERT INTO `user`(`nom`, `prenom`, `pseudo`, `mdp`, `admin`) VALUES ('$nom', '$prenom', '$login', '$mdp','0')";
+            $RequetStatement = $this->_BDD->query($req);
+        } else {
+            echo "erreur";
         }
+
+        include("index.php");
     }
 }
