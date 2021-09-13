@@ -11,3 +11,4 @@ if (isset($_SESSION['connexion'])) {
 } else {
     include("login.php");
 }
+?>
