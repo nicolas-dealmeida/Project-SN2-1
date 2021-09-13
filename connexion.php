@@ -1,6 +1,7 @@
 <?php
-    session_start();
+  session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +18,7 @@
                         <input type="submit" class="" value="Connexion"></input>
                     </p>
                 </form>
+                <a href="inscription.php"><button>Inscription</button></a>
             </div>
         </section>
     </body>
