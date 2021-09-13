@@ -1,10 +1,13 @@
 <?php
-    session_start();
+session_start();
 
-    if(isset($_SESSION['connexion'])){
-        include ("");
+if (isset($_SESSION['connexion'])) {
+    try {
+        $BDD = new PDO('mysql:host=192.168.64.50;dbname=GPS; charset=utf8', 'admin', 'root');
+        echo 'coucou';
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
     }
-    else{
-        include("login.php");
-    }
-?>
+} else {
+    include("login.php");
+}

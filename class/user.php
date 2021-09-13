@@ -14,25 +14,25 @@
 
 
         // Fonction qui permet au user de se connecter, elle attend en paramétre un login et un mdp
-        function connexion($login, $mdp)
+        function connexion($login, $mdp, $BDD)
         {
-            if(isset($_POST['log'] && isset($_POST['pass'])){
+            if(isset($_POST['log']) && isset($_POST['pass'])){
                 $login = $_POST['log'];
                 $mdp = $_POST['pass'];
-        
-                $req = ""
+         
+                $req = "";
                 $RequetStatement=$BDD->query($req);
                 $count=$RequetStatement->fetchColumn();
         
                 if($count!=0){
-                    $_SESSION['log'] = $username;
+                    $_SESSION['log'] = $login;
                     include("");    
                 }
                 else{
                     include("login.php");
                 }
             }else{
-                include("login.php")
+                include("login.php");
             }
         }
 
@@ -44,7 +44,7 @@
                 $valid = true;
                 
                 if(isset($_POST['inscription'])){ // On récupére les informations saisie dans le formulaire d'inscription
-                    $login = htmlentities(trim($login))
+                    $login = htmlentities(trim($login));
                     $nom = htmlentities(trim($nom));
                     $prenom = htmlentities(trim($prenom));
                     $mdp = trim($mpd);
@@ -73,8 +73,9 @@
                     array($nom, $prenom, $mail, $mdp));
                 }
 
-                include("index.php")
+                include("index.php");
   
+            }
         }
     }
 ?>
