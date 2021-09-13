@@ -11,6 +11,11 @@ class GPS
 
     //public
 
+    function __construct($BDD){
+        $this->_BDD = $BDD;
+    }
+    
+
     //fonction qui permet d'ajouter des coordonner en base de donner elle attende en paramettre un nom, latitude et la longitude
     function addcoordonner($nom, $latitude, $longitude)
     {

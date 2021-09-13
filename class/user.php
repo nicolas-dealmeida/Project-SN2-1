@@ -12,26 +12,30 @@ class user
 
     // Variable public
 
+    function __construct($BDD)
+    {
+        $this->_BDD = $BDD;
+    }
 
     // Fonction qui permet au user de se connecter, elle attend en paramétre un login et un mdp
-    function connexion($login, $mdp, $BDD)
+    function connexion($login, $mdp)
     {
         if (isset($_POST['log']) && isset($_POST['pass'])) {
             $login = $_POST['log'];
             $mdp = $_POST['pass'];
 
             $req = "";
-            $RequetStatement = $BDD->query($req);
+            $RequetStatement = $this->_BDD->query($req);
             $count = $RequetStatement->fetchColumn();
 
             if ($count != 0) {
                 $_SESSION['log'] = $login;
                 include("");
             } else {
-                include("login.php");
+                include("connexion.php");
             }
         } else {
-            include("login.php");
+            include("connexion.php");
         }
     }
 
@@ -39,12 +43,12 @@ class user
     {
         session_start();
         session_destroy();
-        include("login.php");
+        include("connexion.php");
         exit();
     }
 
     // Fonction qui permet au user de s'inscrire, elle attend en commentaire un login, un mdp, un nom et un prénom
-    function inscription($login, $mdp, $nom, $prenom, $BDD)
+    function inscription($login, $mdp, $nom, $prenom)
     {
         if (!empty($_POST)) {
             extract($_POST);
@@ -57,25 +61,10 @@ class user
                 $mdp = trim($mpd);
             }
 
-            if (empty($nom)) { // On vérifie si les champs sont remplis
-                $valid = false;
-                $veref_nom = ("Le nom est obligatoire");
-            }
-
-            if (empty($prenom)) {
-                $valid = false;
-                $veref_prenom = ("Le prénom est obligatoire");
-            }
-
-            if (empty($mdp)) {
-                $valid = false;
-                $veref_mdp = "Mot de passe obligatoire";
-            }
-
             if ($valid) { // On mets les informations dans la BDD
                 $mdp = crypt($mdp, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
 
-                $BDD->insert(
+                $this->BDD->insert(
                     "INSERT INTO utilisateur (nom, prenom, mail, mdp) VALUES 
                     (?, ?, ?, ?)",
                     array($nom, $prenom, $mail, $mdp)
