@@ -45,10 +45,10 @@
                     <input name="pass" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Mots de passe</label>
                 </div>
-                <button name="connexion" class="w-100 btn btn-lg btn-primary" type="submit" >Connexion</button>
+                <button name="connexion" class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
                 <p>&nbsp;</p>
             </form>
-            <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'" />
+            <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'"/>
         </main>
         <?php
             if(isset($_POST['connexion'])){

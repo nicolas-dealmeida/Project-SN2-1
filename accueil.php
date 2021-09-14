@@ -44,12 +44,19 @@
                         <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
                     </ul>
                     <div class="col-md-3 text-end">
-                        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                        <button type="button" class="btn btn-primary">Sign-up</button>
+                      <form method = "POST">
+                        <button type="submit" class="btn btn-outline-primary me-2">Login</button>
+                        <button type="submit" class="btn btn-primary" name="deconnexion">Sign-up</button>
+                      </form>
                     </div>
                 </header>
             </div>
         </main>
+        <?php
+            if(isset($_POST['deconnexion'])){
+                $User->deconnexion();
+            }
+        ?>
         <script src="css/assets/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
