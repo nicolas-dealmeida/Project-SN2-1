@@ -56,10 +56,10 @@ $User = new user($BDD);
             </form>
             <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'" />
         </main>
-    <?php
-    if(isset($_POST['connexion'])){
-    $User->connexion($_POST['log'], $_POST['pass']);
-    }
-    ?>
+        <?php
+            if(isset($_POST['connexion'])){
+                $User->connexion($_POST['log'], $_POST['pass']);
+            }
+        ?>
     </body>
 </html>
