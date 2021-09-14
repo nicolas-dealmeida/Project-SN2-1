@@ -34,7 +34,7 @@
     </head>
     <body class="text-center">
         <main class="form-signin">
-            <form method="POST">
+            <form method="POST" action="accueil.php">
                 <img class="mb-4" src="image/logo providence.png" alt="" width="72" height="57">
                 <h1 class="h3 mb-3 fw-normal">Connexion</h1>
                 <div class="form-floating">
@@ -52,7 +52,7 @@
         </main>
         <?php
             if(isset($_POST['connexion'])){
-                $User->connexion($_POST['log'], $_POST['pass']);
+            $User->connexion($_POST['log'], $_POST['pass']);
             }
         ?>
     </body>
