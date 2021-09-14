@@ -64,9 +64,9 @@
             <input type="button" value="Connexion" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='connexion.php'" />
         </main>
         <?php
-        if (isset($_POST['envoi'])) {
-            $User->inscription($_POST['log'], $_POST['pass'], $_POST['name'], $_POST['prenom'], $_POST['conf_pass']);
-        }
+            if(isset($_POST['envoi'])){
+                $User->inscription($_POST['log'], $_POST['pass'], $_POST['name'], $_POST['prenom'], $_POST['conf_pass']);
+            }
         ?>
     </body>
 </html>
