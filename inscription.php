@@ -1,9 +1,8 @@
 <?php
-require("session.php");
-require("class/user.php");
-$User = new user($BDD);
+    require_once("session.php");
+    require_once("class/user.php");
+    $User = new user($BDD);
 ?>
-
 <!doctype html>
 <html lang="fr">
     <head>
@@ -13,11 +12,9 @@ $User = new user($BDD);
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.88.1">
         <title>Inscription</title>
-
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
         <!-- Bootstrap core CSS -->
         <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -33,10 +30,8 @@ $User = new user($BDD);
                 }
             }
         </style>
-
         <!-- Custom styles for this template -->
         <link href="css/signin.css" rel="stylesheet">
-
     </head>
     <body class="text-center">
         <main class="form-signin">
