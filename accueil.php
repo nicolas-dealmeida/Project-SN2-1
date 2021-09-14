@@ -45,8 +45,7 @@
                     </ul>
                     <div class="col-md-3 text-end">
                       <form method = "POST" action="connexion.php">
-                        <button type="submit" class="btn btn-outline-primary me-2">Login</button>
-                        <button type="submit" class="btn btn-primary" name="deconnexion">Sign-up</button>
+                        <button type="submit" class="btn btn-primary" name="deconnexion">deconnexion</button>
                       </form>
                     </div>
                 </header>
