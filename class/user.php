@@ -20,7 +20,7 @@ class user{
             $userexist = $requser->fetch();
              $_SESSION['id_user'] = $userexist['id'];
         }else{
-            $MSG = "Mots de passe incorrect.";
+            echo "Mots de passe incorrect.";
         }
     }
     // Fonction qui permet au user de se déconnecter
@@ -34,10 +34,10 @@ class user{
         if($mdp == $confmdp){
             $req = "INSERT INTO `user`(`nom`, `prenom`, `pseudo`, `mdp`) VALUES ('$nom', '$prenom', '$login', '$mdp')";
             $this->_BDD->query($req);
-            $MSG = "Inscription réussite.";
+            echo "Inscription réussite.";
         }
         else{
-            $MSG = "Le Mots de passe n'est pas le même.";
+            echo "Le Mots de passe n'est pas le même.";
         }
     }
 }
