@@ -2,6 +2,9 @@
     require_once("session.php");
     require_once("class/user.php");
     $User = new user($BDD);
+    if (isset($_SESSION['id'])) {
+        header("Location: accueil.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,7 +37,7 @@
     </head>
     <body class="text-center">
         <main class="form-signin">
-            <form method="POST" action="accueil.php">
+            <form method="POST" action="">
                 <img class="mb-4" src="image/logo providence.png" alt="" width="72" height="57">
                 <h1 class="h3 mb-3 fw-normal">Connexion</h1>
                 <div class="form-floating">

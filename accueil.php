@@ -2,16 +2,13 @@
     require_once("session.php");
     require_once("class/user.php");
     $User = new user($BDD);
-    if (isset($_SESSION['id'])) {
+    if (!isset($_SESSION['id'])) {
         header("Location: connexion.php");
-        exit;
     }
-    echo  $_SESSION['id'];
 ?>
 <?php
     if (isset($_POST['deconnexion'])) {
-        session_destroy();
-        //$User->deconnexion();
+        $User->deconnexion();
     }
 ?>
 <!DOCTYPE html>
@@ -54,8 +51,8 @@
                         <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
                     </ul>
                     <div class="col-md-3 text-end">
-                        <form method="POST" action="connexion.php">
-                            <input type="submit" class="btn btn-primary" name="deconnexion">
+                        <form method="POST" action="">
+                            <input type="submit" class="btn btn-primary" name="deconnexion" value="deconnexion">
                         </form>
                     </div>
                 </header>
