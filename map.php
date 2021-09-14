@@ -30,7 +30,7 @@
 
 <body>
     <div class="centrer">
-        <h1>OpenStreetMap</h1>
+        <h1>Map</h1>
         <div id="map">
             <!-- Ici s'affichera la carte -->
         </div>
