@@ -1,3 +1,11 @@
+<?php
+    require_once("session.php");
+    require_once("class/user.php");
+    $User = new user($BDD);
+    if (!isset($_SESSION['id'])) {
+        header("Location: connexion.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -50,15 +58,13 @@
         // Nous initialisons une liste de marqueurs
         var villes = {
             <?php 
-            $i = 1;
-                while(5 < $i){ ?>
+            $request = $BDD->query("SELECT gps.id_bateau, gps.latitude, gps.longitude, bateau.id , bateau.nom FROM bateau, gps WHERE gps.id_bateau = bateau.id");
+                while($tab = $request->fetch()){ 
+                    ?>
+                
 
-            "Paris": { "lat": 48.852969, "lon": 2.349903 },
-            <?php } ?>
-            "Brest": { "lat": 48.383, "lon": -4.500 },
-            "Quimper": { "lat": 48.000, "lon": -4.100 },
-            "Bayonne": { "lat": 43.500, "lon": -1.467 },
-            "test": { "lat": 49.8948334597173, "lon": 2.297128222269018 },   
+            "<?php echo $tab['nom'] ?>": { "lat": <?php echo $tab['latitude'] ?>, "lon": <?php echo $tab['longitude'] ?> },
+            <?php } ?>   
         };
         // Fonction d'initialisation de la carte
         function initMap() {
