@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -50,7 +49,12 @@
         var markerClusters; // Servira à stocker les groupes de marqueurs
         // Nous initialisons une liste de marqueurs
         var villes = {
+            <?php 
+            $i = 1;
+                while(5 < $i){ ?>
+
             "Paris": { "lat": 48.852969, "lon": 2.349903 },
+            <?php } ?>
             "Brest": { "lat": 48.383, "lon": -4.500 },
             "Quimper": { "lat": 48.000, "lon": -4.100 },
             "Bayonne": { "lat": 43.500, "lon": -1.467 },
@@ -59,7 +63,7 @@
         // Fonction d'initialisation de la carte
         function initMap() {
             // Nous définissons le dossier qui contiendra les marqueurs
-            var iconBase = 'Z:/dev/Project-SN2-1/image/';
+            var iconBase = 'image/';
             // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
             macarte = L.map('map').setView([lat, lon], 11);
             markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
