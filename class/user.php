@@ -6,6 +6,7 @@ class user
     private $_nom;
     private $_prenom;
     private $_login;
+    private $_admin;
     private $_mdp;
     private $_BDD;
     // Variable public
@@ -22,6 +23,12 @@ class user
         if ($userexist == 1) {
             $userexist = $requser->fetch();
             $_SESSION['id_user'] = $userexist['id'];
+            $this->_id = $userexist['id'];
+            $this->_nom = $userexist['nom'];
+            $this->_prenom = $userexist['prenom'];
+            $this->__login = $userexist['pseudo'];
+            $this->_mdp = $userexist['mdp'];
+            $this->_admin = $userexist['admin'];
         } else {
             echo "Mots de passe incorrect.";
         }
@@ -62,5 +69,10 @@ class user
     public function getid()
     {
         return $this->_id;
+    }
+    //fonction qui retourne le statue admin 
+    public function getadmin()
+    {
+        return $this->_admin;
     }
 }
