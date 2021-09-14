@@ -1,6 +1,6 @@
 <?php
     if(isset($_SESSION['id_user'])){
-        include("index.php");
+        include("accueil.php");
     }else{
         include("connexion.php");
     }

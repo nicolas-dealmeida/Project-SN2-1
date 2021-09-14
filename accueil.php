@@ -14,7 +14,7 @@
         <title>Acceuil</title>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
         <!-- Bootstrap core CSS -->
-        <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -56,6 +56,5 @@
                 $User->deconnexion();
             }
         ?>
-        <script src="css/assets/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
