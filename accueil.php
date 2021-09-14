@@ -44,7 +44,7 @@
                         <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
                     </ul>
                     <div class="col-md-3 text-end">
-                      <form method = "POST">
+                      <form method = "POST" action="connexion.php">
                         <button type="submit" class="btn btn-outline-primary me-2">Login</button>
                         <button type="submit" class="btn btn-primary" name="deconnexion">Sign-up</button>
                       </form>

@@ -26,8 +26,6 @@ class user{
     // Fonction qui permet au user de se déconnecter
     function deconnexion(){
         session_destroy();
-        require_once("connexion.php");
-        exit();
     }
     // Fonction qui permet au user de s'inscrire, elle attend en commentaire un login, un mdp, un nom et un prénom
     function inscription($login, $mdp, $nom, $prenom, $confmdp){
