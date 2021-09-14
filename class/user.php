@@ -1,4 +1,5 @@
 <?php
+
 class user
 {
     // Variable privée
@@ -21,14 +22,16 @@ class user
         $requser->execute(array($login, $mdp));
         $userexist = $requser->rowCount();
         if ($userexist == 1) {
-            $userexist = $requser->fetch();
-            $_SESSION['id_user'] = $userexist['id'];
-            $this->_id = $userexist['id'];
-            $this->_nom = $userexist['nom'];
-            $this->_prenom = $userexist['prenom'];
-            $this->__login = $userexist['pseudo'];
-            $this->_mdp = $userexist['mdp'];
-            $this->_admin = $userexist['admin'];
+            $data = $requser->fetch();
+            $_SESSION['id'] = $data['id'];
+            $this->_id = $data['id'];
+            $this->_nom = $data['nom'];
+            $this->_prenom = $data['prenom'];
+            $this->_login = $data['pseudo'];
+            $this->_mdp = $data['mdp'];
+            $this->_admin = $data['admin'];
+            echo '<meta http-equiv="refresh" content="0">';
+            
         } else {
             echo "Mots de passe incorrect.";
         }
@@ -37,6 +40,7 @@ class user
     public function deconnexion()
     {
         session_destroy();
+        echo '<meta http-equiv="refresh" content="0">';
     }
     // Fonction qui permet au user de s'inscrire, elle attend en commentaire un login, un mdp, un nom et un prénom
     public function inscription($login, $mdp, $nom, $prenom, $confmdp)
