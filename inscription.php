@@ -81,10 +81,5 @@ $User = new user($BDD);
         $User->inscription($_POST['log'], $_POST['pass'], $_POST['name'], $_POST['prenom'], $_POST['conf_pass']);
     }
     ?>
-
-
-
 </body>
-
-
 </html>
