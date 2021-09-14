@@ -3,7 +3,7 @@
     require_once("class/user.php");
     $User = new user($BDD);
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">

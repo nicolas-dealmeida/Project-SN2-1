@@ -1,5 +1,5 @@
 <?php
-    if(isset($_SESSION['id_user'])){
+    if(isset($_SESSION['id'])){
         include("index.php");
     } else {
         include("connexion.php");

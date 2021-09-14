@@ -3,7 +3,7 @@
     require_once("class/user.php");
     $User = new user($BDD);
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
@@ -52,7 +52,7 @@
         </main>
         <?php
             if(isset($_POST['connexion'])){
-            $User->connexion($_POST['log'], $_POST['pass']);
+                $User->connexion($_POST['log'], $_POST['pass']);
             }
         ?>
     </body>
