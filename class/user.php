@@ -31,9 +31,8 @@ class user
             $this->_mdp = $data['mdp'];
             $this->_admin = $data['admin'];
             echo '<meta http-equiv="refresh" content="0">';
-            
         } else {
-            echo "Mots de passe incorrect.";
+            return "Mots de passe incorrect";
         }
     }
     // Fonction qui permet au user de se déconnecter
@@ -45,12 +44,19 @@ class user
     // Fonction qui permet au user de s'inscrire, elle attend en commentaire un login, un mdp, un nom et un prénom
     public function inscription($login, $mdp, $nom, $prenom, $confmdp)
     {
-        if ($mdp == $confmdp) {
-            $req = "INSERT INTO `user`(`nom`, `prenom`, `pseudo`, `mdp`) VALUES ('$nom', '$prenom', '$login', '$mdp')";
-            $this->_BDD->query($req);
-            echo "Inscription réussite.";
-        } else {
-            echo "Le Mots de passe n'est pas le même.";
+        $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");
+        $requeteuser->execute(array($login));
+        $userExist = $requeteuser->rowCount();
+        if ($userExist != 1) {
+            if ($mdp == $confmdp) {
+                $req = "INSERT INTO `user`(`nom`, `prenom`, `pseudo`, `mdp`) VALUES ('$nom', '$prenom', '$login', '$mdp')";
+                $this->_BDD->query($req);
+                return "Inscription réussite";
+            } else {
+                return "Le Mots de passe n'est pas le même";
+            }
+        }else{
+            return "Se login est déja utiliser par une autre personne";
         }
     }
 

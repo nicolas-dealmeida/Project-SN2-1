@@ -49,14 +49,18 @@
                     <label for="floatingPassword">Mots de passe</label>
                 </div>
                 <button name="connexion" class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
-                <p>&nbsp;</p>
             </form>
-            <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'"/>
-        </main>
-        <?php
+            <?php
             if(isset($_POST['connexion'])){
-                $User->connexion($_POST['log'], $_POST['pass']);
+                $erreur = $User->connexion($_POST['log'], $_POST['pass']);
+                echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
+            }else{
+                echo "<p>&nbsp;</p>";
             }
         ?>
+       
+            
+            <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'"/>
+        </main>
     </body>
 </html>
