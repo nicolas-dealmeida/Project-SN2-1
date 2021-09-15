@@ -1,10 +1,10 @@
 <?php
-    require_once("session.php");
-    require_once("class/user.php");
-    $User = new user($BDD);
-    if (!isset($_SESSION['id'])) {
-        header("Location: connexion.php");
-    }
+require_once("session.php");
+require_once("class/user.php");
+$User = new user($BDD);
+if (!isset($_SESSION['id'])) {
+    header("Location: connexion.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,43 +12,73 @@
 <head>
     <meta charset="utf-8">
     <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
+    <!-- Bootstrap core CSS -->
+    <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/headers.css" rel="stylesheet">
     <style type="text/css">
         #map {
             /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-            height: 800px;
+            height: 600px;
             width: 1000px;
         }
 
         .centrer {
             position: absolute;
             /* postulat de départ */
-            top: 50%;
+            top: 55%;
             left: 50%;
             /* à 50%/50% du parent référent */
             transform: translate(-50%, -50%);
             /* décalage de 50% de sa propre taille */
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
         }
     </style>
     <title>Carte</title>
 </head>
 
 <body>
+    <main>
+        <div class="container">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"></a>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
+                </ul>
+                <div class="col-md-3 text-end">
+                    <form method="POST" action="">
+                        <input type="submit" class="btn btn-primary" name="deconnexion" value="deconnexion">
+                    </form>
+                </div>
+            </header>
+        </div>
+    </main>
     <div class="centrer">
-        <h1>Map</h1>
         <div id="map">
             <!-- Ici s'affichera la carte -->
         </div>
     </div>
 
     <!-- Fichiers Javascript -->
-    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-        crossorigin=""></script>
-    <script type='text/javascript'
-        src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script>
     <script type="text/javascript">
         // On initialise la latitude et la longitude de Paris (centre de la carte)
         var lat = 48.852969;
@@ -57,14 +87,17 @@
         var markerClusters; // Servira à stocker les groupes de marqueurs
         // Nous initialisons une liste de marqueurs
         var villes = {
-            <?php 
+            <?php
             $request = $BDD->query("SELECT gps.id_bateau, gps.latitude, gps.longitude, bateau.id , bateau.nom FROM bateau, gps WHERE gps.id_bateau = bateau.id");
-                while($tab = $request->fetch()){ 
-                    ?>
-                
+            while ($tab = $request->fetch()) {
+            ?>
 
-            "<?php echo $tab['nom'] ?>": { "lat": <?php echo $tab['latitude'] ?>, "lon": <?php echo $tab['longitude'] ?> },
-            <?php } ?>   
+
+                "<?php echo $tab['nom'] ?>": {
+                    "lat": <?php echo $tab['latitude'] ?>,
+                    "lon": <?php echo $tab['longitude'] ?>
+                },
+            <?php } ?>
         };
         // Fonction d'initialisation de la carte
         function initMap() {
@@ -89,13 +122,15 @@
                     iconAnchor: [25, 50],
                     popupAnchor: [-3, -76],
                 });
-                var marker = L.marker([villes[ville].lat, villes[ville].lon], { icon: myIcon }); // pas de addTo(macarte), l'affichage sera géré par la bibliothèque des clusters
+                var marker = L.marker([villes[ville].lat, villes[ville].lon], {
+                    icon: myIcon
+                }); // pas de addTo(macarte), l'affichage sera géré par la bibliothèque des clusters
                 marker.bindPopup(ville);
                 markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
             }
             macarte.addLayer(markerClusters);
         }
-        window.onload = function () {
+        window.onload = function() {
             // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
             initMap();
         };
