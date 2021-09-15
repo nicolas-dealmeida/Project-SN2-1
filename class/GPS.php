@@ -10,17 +10,19 @@
             public function __construct($BDD){
                 $this->_bdd = $BDD;
             }
-        //Fonction qui permet d'ajouter des coordonner en base de donner elle attend en paramettre un nom, latitude et la longitude
+        //Fonction qui permet d'ajouter des coordonnées en base de données elle attend en paramètre un nom, latitude et la longitude
             public function addcoordonner($nom, $latitude, $longitude){
-                
+
             }
-        //Fonction qui permet de mettre a jour les coodonner GPS elle attend en paramettre le nom du point gps
+        //Fonction qui permet de mettre à jour les coordonnées GPS elle attend en paramètre le nom du point gps
             public function updatecoodonner($nom){
+
             }
-        //Fonction qui permet de supprimer un point gps de la base de donner elle attend en paramettre le nom du point gps
+        //Fonction qui permet de supprimer un point gps de la base de données elle attend en paramètre le nom du point gps
             public function removeGPS($nom){
+
             }
-        //Fonction qui donner les coordonner d'un point gps elle attend en paramettre le nom du point gps
+        //Fonction qui donne les coordonnées d'un point gps elle attend en paramètre le nom du point gps
             public function getcoordonner($nom){
 
             }
