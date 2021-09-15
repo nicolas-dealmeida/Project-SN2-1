@@ -11,28 +11,32 @@
                 $this->_bdd = $BDD;
             }
         //Fonction qui permet d'ajouter des coordonnées en base de données elle attend en paramètre un nom, latitude et la longitude
-            public function addcoordonner($nom, $latitude, $longitude){
-
+            public function addcoordonnees($nom, $latitude, $longitude){
+                $reqaddcoordonnees = $this->_BDD->prepare("");
+                $reqaddcoordonnees->execute();
             }
         //Fonction qui permet de mettre à jour les coordonnées GPS elle attend en paramètre le nom du point gps
-            public function updatecoodonner($nom){
-
+            public function updatecoordonnees($nom){
+                $requpdatecoordonnees = $this->_BDD->prepare("");
+                $requpdatecoordonnees->execute();
             }
         //Fonction qui permet de supprimer un point gps de la base de données elle attend en paramètre le nom du point gps
             public function removeGPS($nom){
-
+                $reqremoveGPS = $this->_BDD->prepare("");
+                $reqremoveGPS->execute();
             }
         //Fonction qui donne les coordonnées d'un point gps elle attend en paramètre le nom du point gps
-            public function getcoordonner($nom){
-
+            public function getcoordonnees($nom){
+                $reqgetcoordonnees = $this->_BDD->prepare("");
+                $reqgetcoordonnees->execute();
             }
         //Fonction qui retourne latitude
             public function getlatitude(){
-
+                return $this->_latitude;
             }
         //Fonction qui retourne longitude
             public function getlongitude(){
-                
+                return $this->_longitude;
             }
     }
 ?>
