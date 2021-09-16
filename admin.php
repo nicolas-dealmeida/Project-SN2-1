@@ -1,3 +1,21 @@
+<?php
+require_once("session.php");
+require_once("class/user.php");
+require_once("class/GPS.php");
+$User = new user($BDD);
+$bateau = new GPS($BDD);
+if (!isset($_SESSION['id'])) {
+    header("Location: connexion.php");
+}
+if (isset($_POST['deconnexion'])) {
+    $User->deconnexion();
+}
+if (isset($_GET['supr'])){
+    $User -> removeUser($_GET['supr']);
+    header("Location: admin.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,9 +28,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
-        <!-- Bootstrap core CSS -->
-        <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/headers.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/headers.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -262,22 +280,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <a href="#"> Michael Holz</a>
-                            </td>
-                            <td>04/10/2013</td>
-                            <td>Admin</td>
-                            <td>Active</td>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                <a href="#" class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
+                        <?php
+                        $User->giveuser();
+                        ?>
+                        
                     </tbody>
                 </table>
             </div>

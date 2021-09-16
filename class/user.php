@@ -15,6 +15,20 @@ class user
     {
         $this->_BDD = $BDD;
     }
+
+    //fonction qui permet de collecter tout les information d'un user elle prend en parametre l'id et return rien
+    public function getuser($id)
+    {
+        $request = $this->_BDD->query("SELECT * FROM `user` WHERE `id` = '$id'");
+        $data = $request->fetch();
+        $this->_id = $data['id'];
+        $this->_nom = $data['nom'];
+        $this->_prenom = $data['prenom'];
+        $this->_login = $data['pseudo'];
+        $this->_admin = $data['admin'];
+        $this->_mdp = $data['mdp'];
+    }
+
     // Fonction qui permet au user de se connecter, elle attend en paramétre un login et un mdp
     public function connexion($login, $mdp)
     {
@@ -35,6 +49,34 @@ class user
             return "Mots de passe incorrect";
         }
     }
+
+    //fonction qqui permet d'update un user elle attend en commentaire un login, un mdp, un nom et un prénom
+    public function updateUser($login, $mdp, $nom, $prenom, $confmdp)
+    {
+        $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");
+        $requeteuser->execute(array($login));
+        $userExist = $requeteuser->rowCount();
+        if ($userExist != 1) {
+            if ($mdp == $confmdp) {
+                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`pseudo`='$login',`mdp`='$mdp' WHERE id = '$this->_id'";
+                $this->_BDD->query($req);
+                return "Inscription réussite";
+            } else {
+                return "Le Mots de passe n'est pas le même";
+            }
+        } else if ($this->_login == $login) {
+            if ($mdp == $confmdp) {
+                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`mdp`='$mdp' WHERE id = '$this->_id'";
+                $this->_BDD->query($req);
+                return "Inscription réussite";
+            } else {
+                return "Le Mots de passe n'est pas le même";
+            }
+        } else {
+            return "Se login est déja utiliser par une autre personne";
+        }
+    }
+
     // Fonction qui permet au user de se déconnecter
     public function deconnexion()
     {
@@ -55,10 +97,40 @@ class user
             } else {
                 return "Le Mots de passe n'est pas le même";
             }
-        }else{
+        } else {
             return "Se login est déja utiliser par une autre personne";
         }
     }
+    //fonction qui donner tout les user en base de donner en prendre rien en parametre et return rien
+    public function giveuser()
+    {
+        $request = $this->_BDD->query("SELECT * FROM user WHERE 1");
+        while ($data = $request->fetch()) {
+            $modf = "modifuser.php?modf=" . $data["id"];
+            $supr = "admin.php?supr=" . $data["id"];
+            echo '<tr>
+                    <td>' . $data['id'] . '</td>
+                    <td>
+                        <a href="#">' . $data['nom'] . '</a>
+                    </td>
+                    <td>' . $data['prenom'] . '</td>
+                    <td>' . $data['pseudo'] . '</td>
+                    <td>' . $data['mdp'] . '</td>
+                    <td>' . $data['admin'] . '</td>
+                    <td>
+                        <a href="' . $modf . '"class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        <a href="' . $supr . '" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                    </td>
+                </tr>';
+        }
+    }
+
+    //fonction qui permet de suprimer des user en base de donner elle prend en parametre l'id du user
+    public function removeUser($id)
+    {
+        $this->_BDD->query("DELETE FROM `user` WHERE `id` = '$id'");
+    }
+
 
     //foncion qui retourne le nom du user
     public function getnom()
@@ -84,5 +156,10 @@ class user
     public function getadmin()
     {
         return $this->_admin;
+    }
+    //fonction qui retourne le mots de passe
+    public function getmdp()
+    {
+        return $this->_mdp;
     }
 }

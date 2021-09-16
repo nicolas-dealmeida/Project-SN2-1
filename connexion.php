@@ -52,7 +52,9 @@
             </form>
             <?php
             if(isset($_POST['connexion'])){
-                $erreur = $User->connexion($_POST['log'], $_POST['pass']);
+                $login = strip_tags($_POST['log']);
+                $mdp = strip_tags($_POST['pass']);
+                $erreur = $User->connexion($login, $mdp);
                 echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
             }else{
                 echo "<p>&nbsp;</p>";
