@@ -2,9 +2,11 @@
 require_once("session.php");
 require_once("class/user.php");
 $User = new user($BDD);
+$User->getuser($_SESSION['id']);
 if (!isset($_SESSION['id'])) {
     header("Location: connexion.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +53,7 @@ if (!isset($_SESSION['id'])) {
         }
     </style>
     <title>Carte</title>
+    <link rel="icon" href="image/logo providence.png" />
 </head>
 
 <body>
@@ -61,6 +64,11 @@ if (!isset($_SESSION['id'])) {
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
+                    <?php
+                    if ($User->getadmin() == 1) {
+                        echo '<li><a href="admin.php" class="nav-link px-2 link-secondary">administrateur</a></li>';
+                    }
+                    ?>
                 </ul>
                 <div class="col-md-3 text-end">
                     <form method="POST" action="">

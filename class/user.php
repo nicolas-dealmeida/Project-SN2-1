@@ -51,24 +51,26 @@ class user
     }
 
     //fonction qqui permet d'update un user elle attend en commentaire un login, un mdp, un nom et un prénom
-    public function updateUser($login, $mdp, $nom, $prenom, $confmdp)
+    public function updateUser($login, $mdp, $nom, $prenom, $confmdp, $admin)
     {
         $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");
         $requeteuser->execute(array($login));
         $userExist = $requeteuser->rowCount();
         if ($userExist != 1) {
             if ($mdp == $confmdp) {
-                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`pseudo`='$login',`mdp`='$mdp' WHERE id = '$this->_id'";
+                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`pseudo`='$login',`mdp`='$mdp',`admin` ='$admin' WHERE id = '$this->_id'";
                 $this->_BDD->query($req);
-                return "Inscription réussite";
+                header("Location:admin.php");
+                return "modification réussite";
             } else {
                 return "Le Mots de passe n'est pas le même";
             }
         } else if ($this->_login == $login) {
             if ($mdp == $confmdp) {
-                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`mdp`='$mdp' WHERE id = '$this->_id'";
+                $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`mdp`='$mdp',`admin` ='$admin' WHERE id = '$this->_id'";
                 $this->_BDD->query($req);
-                return "Inscription réussite";
+                header("Location:admin.php");
+                return "modification réussite";
             } else {
                 return "Le Mots de passe n'est pas le même";
             }

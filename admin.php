@@ -3,15 +3,19 @@ require_once("session.php");
 require_once("class/user.php");
 require_once("class/GPS.php");
 $User = new user($BDD);
+$User->getuser($_SESSION['id']);
 $bateau = new GPS($BDD);
 if (!isset($_SESSION['id'])) {
     header("Location: connexion.php");
 }
+if ($User->getadmin() == 0) {
+    header("Location: accueil.php");
+}
 if (isset($_POST['deconnexion'])) {
     $User->deconnexion();
 }
-if (isset($_GET['supr'])){
-    $User -> removeUser($_GET['supr']);
+if (isset($_GET['supr'])) {
+    $User->removeUser($_GET['supr']);
     header("Location: admin.php");
 }
 ?>
@@ -22,7 +26,8 @@ if (isset($_GET['supr'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap User Management Data Table</title>
+    <title>Administrateur</title>
+    <link rel="icon" href="image/logo providence.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -246,8 +251,13 @@ if (isset($_GET['supr'])){
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                 <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"></a>
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
+                    <?php
+                    if ($User->getadmin() == 1) {
+                        echo '<li><a href="admin.php" class="nav-link px-2 link-secondary">administrateur</a></li>';
+                    }
+                    ?>
                 </ul>
                 <div class="col-md-3 text-end">
                     <form method="POST" action="">
@@ -283,7 +293,7 @@ if (isset($_GET['supr'])){
                         <?php
                         $User->giveuser();
                         ?>
-                        
+
                     </tbody>
                 </table>
             </div>
