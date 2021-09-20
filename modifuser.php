@@ -71,11 +71,16 @@
                 </div>
                 <div class="form-check form-switch">
                     <?php
-                    if ($User->getadmin() == 0){  ?>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui">
-                    <?php } else if ($User->getadmin() == 1){ ?>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui" checked>
-                    <?php } ?>
+                        if ($User->getadmin() == 0){
+                            ?>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui">
+                            <?php
+                        } else if ($User->getadmin() == 1){
+                            ?>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui" checked>
+                            <?php
+                        }
+                    ?>
                     <label class="form-check-label" for="flexSwitchCheckDefault">Admin</label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" name="envoi" type="submit">Modifier</button>
