@@ -111,7 +111,7 @@
                     // Nous définissons le dossier qui contiendra les marqueurs
                     var iconBase = 'image/';
                     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-                    macarte = L.map('map').setView([lat, lon], 11);
+                    macarte = L.map('map').setView([lat, lon], 7);
                     markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
                     // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
                     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',{
