@@ -51,9 +51,11 @@ if (isset($_POST['deconnexion'])) {
                         <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
                         <?php
-                        if ($User->getadmin() == 1) {
-                            echo '<li><a href="admin.php" class="nav-link px-2 link-secondary">Administrateur</a></li>';
-                        }
+                            if($User->getadmin() == 1){
+                                ?>
+                                    <li><a href="admin.php" class="nav-link px-2 link-secondary">Administrateur</a></li>
+                                <?php
+                            }
                         ?>
                     </ul>
                     <div class="col-md-3 text-end">

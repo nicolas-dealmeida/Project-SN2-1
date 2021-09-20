@@ -65,9 +65,11 @@ if (!isset($_SESSION['id'])) {
                     <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
                     <?php
-                    if ($User->getadmin() == 1) {
-                        echo '<li><a href="admin.php" class="nav-link px-2 link-secondary">administrateur</a></li>';
-                    }
+                        if ($User->getadmin() == 1) {
+                            ?>
+                                <li><a href="admin.php" class="nav-link px-2 link-secondary">Administrateur</a></li>
+                            <?php
+                        }
                     ?>
                 </ul>
                 <div class="col-md-3 text-end">
@@ -98,11 +100,9 @@ if (!isset($_SESSION['id'])) {
                 $request = $BDD->query("SELECT gps.id_bateau, gps.latitude, gps.longitude, bateau.id , bateau.nom FROM bateau, gps WHERE gps.id_bateau = bateau.id");
                 while ($tab = $request->fetch()) {
                 ?>
-
-
-                    "<?php echo $tab['nom'] ?>": {
-                        "lat": <?php echo $tab['latitude'] ?>,
-                        "lon": <?php echo $tab['longitude'] ?>,
+                    "<?= $tab['nom'] ?>": {
+                        "lat": <?= $tab['latitude'] ?>,
+                        "lon": <?= $tab['longitude'] ?>,
                     },
                 <?php } ?>
             };
