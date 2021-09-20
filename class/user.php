@@ -9,6 +9,8 @@ class user
     private $_admin;
     private $_mdp;
     private $_BDD;
+
+    
     //Public
     public function __construct($BDD)
     {
@@ -109,7 +111,7 @@ class user
         while ($data = $request->fetch()) {
             $modf = "modifuser.php?modf=" . $data["id"];
             $supr = "admin.php?supr=" . $data["id"];
-?>
+        ?>
             <tr>
                 <td><?= $data['id'] ?></td>
                 <td>
@@ -129,7 +131,7 @@ class user
                     <a href="<?= $supr ?>" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                 </td>
             </tr>
-<?php
+        <?php
         }
     }
 
