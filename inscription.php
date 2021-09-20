@@ -16,7 +16,7 @@ $User = new user($BDD);
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
-            .bd-placeholder-img {
+            .bd-placeholder-img{
                 font-size: 1.125rem;
                 text-anchor: middle;
                 -webkit-user-select: none;
@@ -24,8 +24,8 @@ $User = new user($BDD);
                 user-select: none;
             }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
+            @media (min-width: 768px){
+                .bd-placeholder-img-lg{
                     font-size: 3.5rem;
                 }
             }
@@ -61,7 +61,7 @@ $User = new user($BDD);
                 <button class="w-100 btn btn-lg btn-primary" name="envoi" type="submit">Inscription</button>
             </form>
             <?php
-            if (isset($_POST['envoi'])) {
+            if (isset($_POST['envoi'])){
                 $login = strip_tags($_POST['log']);
                 $mdp = strip_tags($_POST['pass']);
                 $name = strip_tags($_POST['name']);
