@@ -60,8 +60,6 @@
                 echo "<p>&nbsp;</p>";
             }
         ?>
-       
-            
             <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'"/>
         </main>
     </body>

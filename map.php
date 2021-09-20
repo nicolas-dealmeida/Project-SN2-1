@@ -102,7 +102,7 @@ if (!isset($_SESSION['id'])) {
 
                     "<?php echo $tab['nom'] ?>": {
                         "lat": <?php echo $tab['latitude'] ?>,
-                        "lon": <?php echo $tab['longitude'] ?>
+                        "lon": <?php echo $tab['longitude'] ?>,
                     },
                 <?php } ?>
             };
