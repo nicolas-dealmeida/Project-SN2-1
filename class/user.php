@@ -102,38 +102,6 @@
                 return "Se login est déja utiliser par une autre personne";
             }
         }
-<<<<<<< HEAD
-    }
-    //Fonction qui donner tout les user en base de donner en prendre rien en parametre et return rien
-    public function giveuser()
-    {
-        $request = $this->_BDD->query("SELECT * FROM user WHERE 1");
-        while ($data = $request->fetch()) {
-            $modf = "modifuser.php?modf=" . $data["id"];
-            $supr = "admin.php?supr=" . $data["id"];
-?>
-            <tr>
-                <td><?= $data['id'] ?></td>
-                <td>
-                    <a href="#"><?= $data['nom'] ?></a>
-                </td>
-                <td><?= $data['prenom'] ?></td>
-                <td><?= $data['pseudo'] ?></td>
-                <td><?= $data['mdp'] ?></td>
-                <?php
-                if ($data['admin'] == 1) { ?>
-                    <td>Admin</td>
-                <?php }else{ ?>
-                    <td>User</td>
-                <?php }?>
-
-                <td>
-                    <a href="<?= $modf ?>" class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                    <a href="<?= $supr ?>" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                </td>
-            </tr>
-<?php
-=======
         //Fonction qui donner tout les user en base de donner en prendre rien en parametre et return rien
         public function giveuser()
         {
@@ -158,7 +126,6 @@
                     </tr>
                 <?php
             }
->>>>>>> a105185d1dfb94d7e7e65bd0af81cb175bc8429b
         }
 
         //Fonction qui permet de suprimer des user en base de donner elle prend en parametre l'id du user
