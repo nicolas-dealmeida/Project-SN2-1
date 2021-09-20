@@ -271,7 +271,7 @@ if (isset($_GET['supr'])) {
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-5">
-                                <h2>User<b>Panel</b></h2>
+                                <h2>User <b>Panel</b></h2>
                             </div>
                         </div>
                     </div>
@@ -303,7 +303,7 @@ if (isset($_GET['supr'])) {
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-5">
-                                <h2>Coordonner<b>Panel</b></h2>
+                                <h2>Coordonnées <b>Panel</b></h2>
                             </div>
                         </div>
                     </div>
