@@ -103,9 +103,8 @@ class GPS
     }
     //function qui permet les les marquer sur une carte elle prendre rien en parametre
     public function afficheMarker(){
-
-        
-    }
+ //
+}
 
     //Fonction qui retourne latitude
     public function getlatitude()
