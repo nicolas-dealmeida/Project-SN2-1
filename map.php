@@ -74,7 +74,7 @@
                     </ul>
                     <div class="col-md-3 text-end">
                         <form method="POST" action="">
-                            <input type="submit" class="btn btn-primary" name="deconnexion" value="deconnexion">
+                            <input type="submit" class="btn btn-primary" name="deconnexion" value="Déconnexion">
                         </form>
                     </div>
                 </header>
