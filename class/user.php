@@ -114,7 +114,7 @@ class user
                 <tr>
                     <td><?= $data['id'] ?></td>
                     <td>
-                        <a href="#">' . $data['nom'] . '</a>
+                        <a href="#"><?= $data['nom'] ?></a>
                     </td>
                     <td><?= $data['prenom'] ?></td>
                     <td><?= $data['pseudo'] ?></td>
