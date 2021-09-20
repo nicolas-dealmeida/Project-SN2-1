@@ -34,7 +34,7 @@
             $requser = $this->_BDD->prepare("SELECT * FROM `user` WHERE `pseudo` = ? AND `mdp` = ?");
             $requser->execute(array($login, $mdp));
             $userexist = $requser->rowCount();
-            if ($userexist == 1) {
+            if($userexist == 1){
                 $data = $requser->fetch();
                 $_SESSION['id'] = $data['id'];
                 $this->_id = $data['id'];
@@ -55,8 +55,8 @@
             $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");
             $requeteuser->execute(array($login));
             $userExist = $requeteuser->rowCount();
-            if ($userExist != 1) {
-                if ($mdp == $confmdp) {
+            if($userExist != 1){
+                if($mdp == $confmdp){
                     $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`pseudo`='$login',`mdp`='$mdp',`admin` ='$admin' WHERE id = '$this->_id'";
                     $this->_BDD->query($req);
                     header("Location:admin.php");
@@ -64,8 +64,8 @@
                 } else {
                     return "Le Mots de passe n'est pas le même";
                 }
-            } else if ($this->_login == $login) {
-                if ($mdp == $confmdp) {
+            } else if($this->_login == $login){
+                if($mdp == $confmdp){
                     $req = "UPDATE `user` SET `nom`='$nom',`prenom`='$prenom',`mdp`='$mdp',`admin` ='$admin' WHERE id = '$this->_id'";
                     $this->_BDD->query($req);
                     header("Location:admin.php");
@@ -90,8 +90,8 @@
             $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");
             $requeteuser->execute(array($login));
             $userExist = $requeteuser->rowCount();
-            if ($userExist != 1) {
-                if ($mdp == $confmdp) {
+            if($userExist != 1){
+                if($mdp == $confmdp){
                     $req = "INSERT INTO `user`(`nom`, `prenom`, `pseudo`, `mdp`) VALUES ('$nom', '$prenom', '$login', '$mdp')";
                     $this->_BDD->query($req);
                     return "Inscription réussite";
@@ -106,7 +106,7 @@
         public function giveuser()
         {
             $request = $this->_BDD->query("SELECT * FROM user WHERE 1");
-            while ($data = $request->fetch()) {
+            while($data = $request->fetch()){
                 $modf = "modifuser.php?modf=" . $data["id"];
                 $supr = "admin.php?supr=" . $data["id"];
                 ?>
