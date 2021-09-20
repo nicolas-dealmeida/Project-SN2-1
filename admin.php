@@ -26,7 +26,7 @@ if (isset($_GET['supr'])){
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Administrateur</title>
-        <link rel="icon" href="image/logo providence.png" />
+        <link rel="icon" href="image/logo_providence.png" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -291,9 +291,8 @@ if (isset($_GET['supr'])){
                         </thead>
                         <tbody>
                             <?php
-                            $User->giveuser();
+                                $User->giveuser();
                             ?>
-
                         </tbody>
                     </table>
                 </div>

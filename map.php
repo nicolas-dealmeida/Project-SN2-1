@@ -53,7 +53,7 @@ if (!isset($_SESSION['id'])){
         }
     </style>
     <title>Carte</title>
-    <link rel="icon" href="image/logo providence.png" />
+    <link rel="icon" href="image/logo_providence.png" />
 </head>
 
 <body>

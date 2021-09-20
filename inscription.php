@@ -36,7 +36,7 @@ $User = new user($BDD);
     <body class="text-center">
         <main class="form-signin">
             <form method="POST">
-                <img class="mb-4" src="image/logo providence.png" alt="" width="72" height="57">
+                <img class="mb-4" src="image/logo_providence.png" alt="" width="72" height="57">
                 <h1 class="h3 mb-3 fw-normal">Inscription</h1>
                 <div class="form-floating">
                     <input name="log" type="text" class="form-control" id="floatingInput" placeholder="login" required>

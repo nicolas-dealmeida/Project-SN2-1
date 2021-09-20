@@ -19,7 +19,7 @@ if (isset($_POST['deconnexion'])){
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.88.1">
-        <link rel="icon" href="image/logo providence.png" />
+        <link rel="icon" href="image/logo_providence.png" />
         <title>Acceuil</title>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
         <!-- Bootstrap core CSS -->
