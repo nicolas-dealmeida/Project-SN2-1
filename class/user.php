@@ -51,7 +51,7 @@ class user
         }
     }
 
-    //Fonction qqui permet d'update un user elle attend en commentaire un login, un mdp, un nom et un prénom
+    //Fonction qqui permet d'update un user elle attend en paramettre un login, un mdp, un nom et un prénom
     public function updateUser($login, $mdp, $nom, $prenom, $confmdp, $admin)
     {
         $requeteuser = $this->_BDD->prepare("SELECT * FROM user WHERE pseudo = ?");

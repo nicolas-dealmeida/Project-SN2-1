@@ -314,31 +314,15 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>id_bateau</th>
                                 <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Pseudo</th>
-                                <th>Mots de passe</th>
-                                <th>Type Utilisateur</th>
+                                <th>latitude</th>
+                                <th>longitude</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="#">Michael Holz</a>
-                                </td>
-                                <td>04/10/2013</td>
-                                <td>Admin</td>
-                                <td>Active</td>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <a href="#" class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
