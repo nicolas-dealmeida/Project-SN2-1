@@ -110,20 +110,22 @@ class user
         while ($data = $request->fetch()) {
             $modf = "modifuser.php?modf=" . $data["id"];
             $supr = "admin.php?supr=" . $data["id"];
-            echo '<tr>
-                    <td>' . $data['id'] . '</td>
+            ?>
+                <tr>
+                    <td><?= $data['id'] ?></td>
                     <td>
                         <a href="#">' . $data['nom'] . '</a>
                     </td>
-                    <td>' . $data['prenom'] . '</td>
-                    <td>' . $data['pseudo'] . '</td>
-                    <td>' . $data['mdp'] . '</td>
-                    <td>' . $data['admin'] . '</td>
+                    <td><?= $data['prenom'] ?></td>
+                    <td><?= $data['pseudo'] ?></td>
+                    <td><?= $data['mdp'] ?></td>
+                    <td><?= $data['admin'] ?></td>
                     <td>
-                        <a href="' . $modf . '"class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                        <a href="' . $supr . '" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        <a href="<?= $modf ?>" class="settings" title="modifier" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        <a href="<?= $supr ?>" class="delete" title="supprimer" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                     </td>
-                </tr>';
+                </tr>
+            <?php
         }
     }
 
