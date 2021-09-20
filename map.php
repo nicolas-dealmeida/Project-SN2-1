@@ -8,6 +8,10 @@
     if (!isset($_SESSION['id'])){
         header("Location: connexion.php");
     }
+
+    if (isset($_POST['deconnexion'])){
+        $User->deconnexion();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +128,7 @@
                     for (ville in villes){
                         // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
                         var myIcon = L.icon({
-                            iconUrl: iconBase + "marker.png",
+                            iconUrl: iconBase + "marker_bateau.png",
                             iconSize: [50, 50],
                             iconAnchor: [25, 50],
                             popupAnchor: [-3, -76],
