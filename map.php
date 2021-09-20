@@ -90,8 +90,8 @@
             <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script>
             <script type="text/javascript">
                 // On initialise la latitude et la longitude de Paris (centre de la carte)
-                var lat = 48.852969;
-                var lon = 2.349903;
+                var lat = 49.894067;
+                var lon = 2.295753;
                 var macarte = null;
                 var markerClusters; // Servira à stocker les groupes de marqueurs
                 // Nous initialisons une liste de marqueurs
