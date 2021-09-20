@@ -5,10 +5,10 @@ $User = new user($BDD);
 $admin = new user($BDD);
 $admin->getuser($_SESSION['id']);
 $User->getuser($_GET['modf']);
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])){
     header("Location: connexion.php");
 }
-if ($admin->getadmin() == 0) {
+if ($admin->getadmin() == 0){
     header("Location: accueil.php");
 }
 ?>
@@ -26,7 +26,7 @@ if ($admin->getadmin() == 0) {
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
-            .bd-placeholder-img {
+            .bd-placeholder-img{
                 font-size: 1.125rem;
                 text-anchor: middle;
                 -webkit-user-select: none;
@@ -34,8 +34,8 @@ if ($admin->getadmin() == 0) {
                 user-select: none;
             }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
+            @media (min-width: 768px){
+                .bd-placeholder-img-lg{
                     font-size: 3.5rem;
                 }
             }
@@ -69,9 +69,9 @@ if ($admin->getadmin() == 0) {
                 </div>
                 <div class="form-check form-switch">
                     <?php
-                    if ($User->getadmin() == 0) {  ?>
+                    if ($User->getadmin() == 0){  ?>
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui">
-                    <?php } else if ($User->getadmin() == 1) { ?>
+                    <?php } else if ($User->getadmin() == 1){ ?>
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="admin" value="oui" checked>
                     <?php } ?>
                     <label class="form-check-label" for="flexSwitchCheckDefault">Admin</label>
@@ -79,20 +79,20 @@ if ($admin->getadmin() == 0) {
                 <button class="w-100 btn btn-lg btn-primary" name="envoi" type="submit">Modifier</button>
             </form>
             <?php
-            if (isset($_POST['envoi'])) {
+            if (isset($_POST['envoi'])){
                 $login = strip_tags($_POST['log']);
                 $mdp = strip_tags($_POST['pass']);
                 $name = strip_tags($_POST['name']);
                 $prenom = strip_tags($_POST['prenom']);
                 $conf_pass = strip_tags($_POST['conf_pass']);
-                if (isset($_POST['admin'])) {
+                if (isset($_POST['admin'])){
                     $admin = "1";
-                } else {
+                } else{
                     $admin = '0';
                 }
                 $erreur = $User->updateUser($login, $mdp, $name, $prenom, $conf_pass, $admin);
                 echo "<p style=color:#FF0000><b>" . $erreur . "</b></p>";
-            } else {
+            } else{
                 echo "<p>&nbsp;</p>";
             }
             ?>

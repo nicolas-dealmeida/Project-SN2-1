@@ -1,7 +1,7 @@
 <?php
     if(isset($_SESSION['id'])){
         include("index.php");
-    } else {
+    } else{
         include("connexion.php");
     }
 ?>

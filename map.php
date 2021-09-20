@@ -3,7 +3,7 @@ require_once("session.php");
 require_once("class/user.php");
 $User = new user($BDD);
 $User->getuser($_SESSION['id']);
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])){
     header("Location: connexion.php");
 }
 
@@ -22,13 +22,13 @@ if (!isset($_SESSION['id'])) {
     <link href="css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/headers.css" rel="stylesheet">
     <style type="text/css">
-        #map {
+        #map{
             /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
             height: 600px;
             width: 1000px;
         }
 
-        .centrer {
+        .centrer{
             position: absolute;
             /* postulat de départ */
             top: 55%;
@@ -38,7 +38,7 @@ if (!isset($_SESSION['id'])) {
             /* décalage de 50% de sa propre taille */
         }
 
-        .bd-placeholder-img {
+        .bd-placeholder-img{
             font-size: 1.125rem;
             text-anchor: middle;
             -webkit-user-select: none;
@@ -46,8 +46,8 @@ if (!isset($_SESSION['id'])) {
             user-select: none;
         }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
+        @media (min-width: 768px){
+            .bd-placeholder-img-lg{
                 font-size: 3.5rem;
             }
         }
@@ -65,7 +65,7 @@ if (!isset($_SESSION['id'])) {
                     <li><a href="accueil.php" class="nav-link px-2 link-secondary">Home</a></li>
                     <li><a href="map.php" class="nav-link px-2 link-dark">Map</a></li>
                     <?php
-                        if ($User->getadmin() == 1) {
+                        if ($User->getadmin() == 1){
                             ?>
                                 <li><a href="admin.php" class="nav-link px-2 link-secondary">Administrateur</a></li>
                             <?php
@@ -95,33 +95,33 @@ if (!isset($_SESSION['id'])) {
             var macarte = null;
             var markerClusters; // Servira à stocker les groupes de marqueurs
             // Nous initialisons une liste de marqueurs
-            var villes = {
+            var villes ={
                 <?php
                 $request = $BDD->query("SELECT gps.id_bateau, gps.latitude, gps.longitude, bateau.id , bateau.nom FROM bateau, gps WHERE gps.id_bateau = bateau.id");
-                while ($tab = $request->fetch()) {
+                while ($tab = $request->fetch()){
                 ?>
-                    "<?= $tab['nom'] ?>": {
+                    "<?= $tab['nom'] ?>":{
                         "lat": <?= $tab['latitude'] ?>,
                         "lon": <?= $tab['longitude'] ?>,
                     },
                 <?php } ?>
             };
             // Fonction d'initialisation de la carte
-            function initMap() {
+            function initMap(){
                 // Nous définissons le dossier qui contiendra les marqueurs
                 var iconBase = 'image/';
                 // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
                 macarte = L.map('map').setView([lat, lon], 11);
                 markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
                 // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',{
                     // Il est toujours bien de laisser le lien vers la source des données
                     attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
                     minZoom: 1,
                     maxZoom: 20
                 }).addTo(macarte);
                 // Nous parcourons la liste des villes
-                for (ville in villes) {
+                for (ville in villes){
                     // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
                     var myIcon = L.icon({
                         iconUrl: iconBase + "marker.png",
@@ -129,7 +129,7 @@ if (!isset($_SESSION['id'])) {
                         iconAnchor: [25, 50],
                         popupAnchor: [-3, -76],
                     });
-                    var marker = L.marker([villes[ville].lat, villes[ville].lon], {
+                    var marker = L.marker([villes[ville].lat, villes[ville].lon],{
                         icon: myIcon
                     }); // pas de addTo(macarte), l'affichage sera géré par la bibliothèque des clusters
                     marker.bindPopup(ville);
@@ -137,7 +137,7 @@ if (!isset($_SESSION['id'])) {
                 }
                 macarte.addLayer(markerClusters);
             }
-            window.onload = function() {
+            window.onload = function(){
                 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
                 initMap();
             };

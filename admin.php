@@ -5,16 +5,16 @@ require_once("class/GPS.php");
 $User = new user($BDD);
 $User->getuser($_SESSION['id']);
 $bateau = new GPS($BDD);
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])){
     header("Location: connexion.php");
 }
-if ($User->getadmin() == 0) {
+if ($User->getadmin() == 0){
     header("Location: accueil.php");
 }
-if (isset($_POST['deconnexion'])) {
+if (isset($_POST['deconnexion'])){
     $User->deconnexion();
 }
-if (isset($_GET['supr'])) {
+if (isset($_GET['supr'])){
     $User->removeUser($_GET['supr']);
     header("Location: admin.php");
 }
@@ -40,18 +40,18 @@ if (isset($_GET['supr'])) {
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <style>
-            body {
+            body{
                 color: #566787;
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;
                 font-size: 13px;
             }
 
-            .table-responsive {
+            .table-responsive{
                 margin: 30px 0;
             }
 
-            .table-wrapper {
+            .table-wrapper{
                 min-width: 1000px;
                 background: #fff;
                 padding: 20px 25px;
@@ -59,7 +59,7 @@ if (isset($_GET['supr'])) {
                 box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
             }
 
-            .table-title {
+            .table-title{
                 padding-bottom: 15px;
                 background: #299be4;
                 color: #fff;
@@ -68,12 +68,12 @@ if (isset($_GET['supr'])) {
                 border-radius: 3px 3px 0 0;
             }
 
-            .table-title h2 {
+            .table-title h2{
                 margin: 5px 0 0;
                 font-size: 24px;
             }
 
-            .table-title .btn {
+            .table-title .btn{
                 color: #566787;
                 float: right;
                 font-size: 13px;
@@ -87,87 +87,87 @@ if (isset($_GET['supr'])) {
             }
 
             .table-title .btn:hover,
-            .table-title .btn:focus {
+            .table-title .btn:focus{
                 color: #566787;
                 background: #f2f2f2;
             }
 
-            .table-title .btn i {
+            .table-title .btn i{
                 float: left;
                 font-size: 21px;
                 margin-right: 5px;
             }
 
-            .table-title .btn span {
+            .table-title .btn span{
                 float: left;
                 margin-top: 2px;
             }
 
             table.table tr th,
-            table.table tr td {
+            table.table tr td{
                 border-color: #e9e9e9;
                 padding: 12px 15px;
                 vertical-align: middle;
             }
 
-            table.table tr th:first-child {
+            table.table tr th:first-child{
                 width: 60px;
             }
 
-            table.table tr th:last-child {
+            table.table tr th:last-child{
                 width: 100px;
             }
 
-            table.table-striped tbody tr:nth-of-type(odd) {
+            table.table-striped tbody tr:nth-of-type(odd){
                 background-color: #fcfcfc;
             }
 
-            table.table-striped.table-hover tbody tr:hover {
+            table.table-striped.table-hover tbody tr:hover{
                 background: #f5f5f5;
             }
 
-            table.table th i {
+            table.table th i{
                 font-size: 13px;
                 margin: 0 5px;
                 cursor: pointer;
             }
 
-            table.table td:last-child i {
+            table.table td:last-child i{
                 opacity: 0.9;
                 font-size: 22px;
                 margin: 0 5px;
             }
 
-            table.table td a {
+            table.table td a{
                 font-weight: bold;
                 color: #566787;
                 display: inline-block;
                 text-decoration: none;
             }
 
-            table.table td a:hover {
+            table.table td a:hover{
                 color: #2196F3;
             }
 
-            table.table td a.settings {
+            table.table td a.settings{
                 color: #2196F3;
             }
 
-            table.table td a.delete {
+            table.table td a.delete{
                 color: #F44336;
             }
 
-            table.table td i {
+            table.table td i{
                 font-size: 19px;
             }
 
-            table.table .avatar {
+            table.table .avatar{
                 border-radius: 50%;
                 vertical-align: middle;
                 margin-right: 10px;
             }
 
-            .status {
+            .status{
                 font-size: 30px;
                 margin: 2px 2px 0 0;
                 display: inline-block;
@@ -175,28 +175,28 @@ if (isset($_GET['supr'])) {
                 line-height: 10px;
             }
 
-            .text-success {
+            .text-success{
                 color: #10c469;
             }
 
-            .text-info {
+            .text-info{
                 color: #62c9e8;
             }
 
-            .text-warning {
+            .text-warning{
                 color: #FFC107;
             }
 
-            .text-danger {
+            .text-danger{
                 color: #ff5b5b;
             }
 
-            .pagination {
+            .pagination{
                 float: right;
                 margin: 0 0 5px;
             }
 
-            .pagination li a {
+            .pagination li a{
                 border: none;
                 font-size: 13px;
                 min-width: 30px;
@@ -209,36 +209,36 @@ if (isset($_GET['supr'])) {
                 padding: 0 6px;
             }
 
-            .pagination li a:hover {
+            .pagination li a:hover{
                 color: #666;
             }
 
             .pagination li.active a,
-            .pagination li.active a.page-link {
+            .pagination li.active a.page-link{
                 background: #03A9F4;
             }
 
-            .pagination li.active a:hover {
+            .pagination li.active a:hover{
                 background: #0397d6;
             }
 
-            .pagination li.disabled i {
+            .pagination li.disabled i{
                 color: #ccc;
             }
 
-            .pagination li i {
+            .pagination li i{
                 font-size: 16px;
                 padding-top: 6px
             }
 
-            .hint-text {
+            .hint-text{
                 float: left;
                 margin-top: 10px;
                 font-size: 13px;
             }
         </style>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();
             });
         </script>
