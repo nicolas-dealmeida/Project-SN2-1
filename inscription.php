@@ -1,7 +1,8 @@
 <?php
-require_once("session.php");
-require_once("class/user.php");
-$User = new user($BDD);
+    require_once("session.php");
+    require_once("class/user.php");
+    
+    $User = new user($BDD);
 ?>
 <!DOCTYPE html>
 <html lang="fr">

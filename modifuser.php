@@ -1,16 +1,18 @@
 <?php
-require_once("session.php");
-require_once("class/user.php");
-$User = new user($BDD);
-$admin = new user($BDD);
-$admin->getuser($_SESSION['id']);
-$User->getuser($_GET['modf']);
-if (!isset($_SESSION['id'])){
-    header("Location: connexion.php");
-}
-if ($admin->getadmin() == 0){
-    header("Location: accueil.php");
-}
+    require_once("session.php");
+    require_once("class/user.php");
+
+    $User = new user($BDD);
+    $admin = new user($BDD);
+    $admin->getuser($_SESSION['id']);
+    $User->getuser($_GET['modf']);
+    
+    if (!isset($_SESSION['id'])){
+        header("Location: connexion.php");
+    }
+    if ($admin->getadmin() == 0){
+        header("Location: accueil.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

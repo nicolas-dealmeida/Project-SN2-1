@@ -1,23 +1,25 @@
 <?php
-require_once("session.php");
-require_once("class/user.php");
-require_once("class/GPS.php");
-$User = new user($BDD);
-$User->getuser($_SESSION['id']);
-$bateau = new GPS($BDD);
-if (!isset($_SESSION['id'])){
-    header("Location: connexion.php");
-}
-if ($User->getadmin() == 0){
-    header("Location: accueil.php");
-}
-if (isset($_POST['deconnexion'])){
-    $User->deconnexion();
-}
-if (isset($_GET['supr'])){
-    $User->removeUser($_GET['supr']);
-    header("Location: admin.php");
-}
+    require_once("session.php");
+    require_once("class/user.php");
+    require_once("class/GPS.php");
+
+    $User = new user($BDD);
+    $User->getuser($_SESSION['id']);
+    $bateau = new GPS($BDD);
+    
+    if (!isset($_SESSION['id'])){
+        header("Location: connexion.php");
+    }
+    if ($User->getadmin() == 0){
+        header("Location: accueil.php");
+    }
+    if (isset($_POST['deconnexion'])){
+        $User->deconnexion();
+    }
+    if (isset($_GET['supr'])){
+        $User->removeUser($_GET['supr']);
+        header("Location: admin.php");
+    }
 ?>
 
 <!DOCTYPE html>

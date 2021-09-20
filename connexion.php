@@ -1,7 +1,9 @@
 <?php
     require_once("session.php");
     require_once("class/user.php");
+
     $User = new user($BDD);
+    
     if (isset($_SESSION['id'])){
         header("Location: accueil.php");
     }

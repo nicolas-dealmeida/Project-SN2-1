@@ -1,15 +1,17 @@
 <?php
-require_once("session.php");
-require_once("class/user.php");
-$User = new user($BDD);
-$User->getuser($_SESSION['id']);
-if (!isset($_SESSION['id'])){
-    header("Location: connexion.php");
-}
+    require_once("session.php");
+    require_once("class/user.php");
 
-if (isset($_POST['deconnexion'])){
-    $User->deconnexion();
-}
+    $User = new user($BDD);
+    $User->getuser($_SESSION['id']);
+    
+    if (!isset($_SESSION['id'])){
+        header("Location: connexion.php");
+    }
+
+    if (isset($_POST['deconnexion'])){
+        $User->deconnexion();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
