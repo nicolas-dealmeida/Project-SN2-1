@@ -62,17 +62,17 @@
                 <button class="w-100 btn btn-lg btn-primary" name="envoi" type="submit">Inscription</button>
             </form>
             <?php
-            if (isset($_POST['envoi'])){
-                $login = strip_tags($_POST['log']);
-                $mdp = strip_tags($_POST['pass']);
-                $name = strip_tags($_POST['name']);
-                $prenom = strip_tags($_POST['prenom']);
-                $conf_pass = strip_tags($_POST['conf_pass']);
-                $erreur = $User->inscription($login, $mdp, $name, $prenom, $conf_pass);
-                echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
-            }else{
-                echo "<p>&nbsp;</p>";
-            }
+                if (isset($_POST['envoi'])){
+                    $login = strip_tags($_POST['log']);
+                    $mdp = strip_tags($_POST['pass']);
+                    $name = strip_tags($_POST['name']);
+                    $prenom = strip_tags($_POST['prenom']);
+                    $conf_pass = strip_tags($_POST['conf_pass']);
+                    $erreur = $User->inscription($login, $mdp, $name, $prenom, $conf_pass);
+                    echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
+                }else{
+                    echo "<p>&nbsp;</p>";
+                }
             ?>
             <input type="button" value="Connexion" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='connexion.php'" />
         </main>

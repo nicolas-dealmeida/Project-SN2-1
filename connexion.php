@@ -53,15 +53,15 @@
                 <button name="connexion" class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
             </form>
             <?php
-            if(isset($_POST['connexion'])){
-                $login = strip_tags($_POST['log']);
-                $mdp = strip_tags($_POST['pass']);
-                $erreur = $User->connexion($login, $mdp);
-                echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
-            }else{
-                echo "<p>&nbsp;</p>";
-            }
-        ?>
+                if(isset($_POST['connexion'])){
+                    $login = strip_tags($_POST['log']);
+                    $mdp = strip_tags($_POST['pass']);
+                    $erreur = $User->connexion($login, $mdp);
+                    echo "<p style=color:#FF0000><b>".$erreur."</b></p>";
+                }else{
+                    echo "<p>&nbsp;</p>";
+                }
+            ?>
             <input type="button" value="Inscription" class="w-100 btn btn-lg btn-primary" onClick="window.location.href='inscription.php'"/>
         </main>
     </body>
