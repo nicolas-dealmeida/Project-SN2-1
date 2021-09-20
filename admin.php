@@ -287,7 +287,7 @@
                                 <th>Prenom</th>
                                 <th>Pseudo</th>
                                 <th>Mots de passe</th>
-                                <th>Admin</th>
+                                <th>Type Utilisateur</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -318,7 +318,7 @@
                                 <th>Prenom</th>
                                 <th>Pseudo</th>
                                 <th>Mots de passe</th>
-                                <th>Admin</th>
+                                <th>Type Utilisateur</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
