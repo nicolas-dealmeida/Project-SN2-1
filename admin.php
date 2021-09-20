@@ -20,6 +20,10 @@
         $User->removeUser($_GET['supr']);
         header("Location: admin.php");
     }
+    if (isset($_GET['suprBateau'])){
+        $bateau->removeGPS($_GET['suprBateau']);
+        header("Location: admin.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -322,7 +326,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            <?php $bateau->givecoordonerplsunom(); ?>
                         </tbody>
                     </table>
                 </div>
