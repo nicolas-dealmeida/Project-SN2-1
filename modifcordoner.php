@@ -49,7 +49,7 @@
     <body class="text-center">
         <main class="form-signin">
             <form method="POST">
-                <h1 class="h3 mb-3 fw-normal">modif Bateau
+                <h1 class="h3 mb-3 fw-normal">Modification Bateau
                 <?= $bateau->getNomBateau() ?>
                 </h1>
                 <div class="form-floating">

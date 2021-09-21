@@ -48,7 +48,7 @@
     <body class="text-center">
         <main class="form-signin">
             <form method="POST">
-                <h1 class="h3 mb-3 fw-normal">modif user</h1>
+                <h1 class="h3 mb-3 fw-normal">Modification User</h1>
                 <div class="form-floating">
                     <input name="log" type="text" class="form-control" id="floatingInput" placeholder="login" value="<?= $User->getlogin() ?>" required>
                     <label for="floatingInput">Login</label>
