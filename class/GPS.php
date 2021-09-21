@@ -103,7 +103,17 @@ class GPS
     }
     //function qui permet les les marquer sur une carte elle prendre rien en parametre
     public function afficheMarker(){
- //
+        
+        $request = $this->_bdd->query("SELECT gps.`id`, gps.id_bateau, gps.latitude, gps.longitude, bateau.nom FROM gps, bateau WHERE gps.id_bateau = bateau.id ORDER BY `gps`.`id` DESC");
+        while ($tab = $request->fetch()){ ?>
+        <script> 
+        "<?= $tab['nom'] ?>":{
+            "lat": <?= $tab['latitude'] ?>;
+            "lon": <?= $tab['longitude'] ?>;
+        };
+        </script>
+        <?php
+    } 
 }
 
     //Fonction qui retourne latitude
