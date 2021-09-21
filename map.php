@@ -1,7 +1,8 @@
 <?php
     require_once("session.php");
     require_once("class/user.php");
-    
+    require_once("class/GPS.php");
+    $bateau = new GPS($BDD);
     $User = new user($BDD);
     $User->getuser($_SESSION['id']);
 
